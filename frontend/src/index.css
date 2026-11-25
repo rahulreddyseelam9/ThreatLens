@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --tl-bg: #020207;
+  --tl-navy: #1A1C52;
+  --tl-purple: #4E4B5C;
+  --tl-blue: #141BD4;
+  --tl-blue-deep: #0C11A2;
+  --tl-blue-2: #4D5DB3;
+  --tl-warm: #B16258;
+  --tl-bluegray: #B9C3D6;
+  --tl-safe: #39D98A;
+  --tl-low: #4DABF7;
+  --tl-med: #F5C542;
+  --tl-high: #FF9F43;
+  --tl-crit: #FF4D67;
+}
+
+@layer base {
+  :root {
+    --background: 240 60% 2%;
+    --foreground: 216 33% 90%;
+    --card: 240 49% 12%;
+    --card-foreground: 216 33% 90%;
+    --popover: 240 60% 4%;
+    --popover-foreground: 216 33% 90%;
+    --primary: 238 82% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 229 42% 50%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 240 20% 20%;
+    --muted-foreground: 216 20% 70%;
+    --accent: 238 82% 45%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 351 100% 65%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 216 25% 40%;
+    --input: 216 25% 30%;
+    --ring: 238 82% 55%;
+    --radius: 0.75rem;
+  }
+}
+
+* {
+  border-color: hsl(var(--border) / 0.15);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: #020207;
+  color: #B9C3D6;
+  font-family: Inter, Manrope, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, .font-display {
+  font-family: "Space Grotesk", Sora, sans-serif;
+}
+
+.font-mono, code {
+  font-family: Consolas, Monaco, "Courier New", monospace;
+}
+
+::selection {
+  background: rgba(20, 27, 212, 0.5);
+  color: #fff;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #05060f; }
+::-webkit-scrollbar-thumb { background: #1A1C52; border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: #4D5DB3; }
+
+@layer components {
+  .tl-glass {
+    background: rgba(26, 28, 82, 0.35);
+    border: 1px solid rgba(185, 195, 214, 0.14);
+    backdrop-filter: blur(14px);
+  }
+  .tl-glass-strong {
+    background: rgba(8, 9, 24, 0.85);
+    border: 1px solid rgba(185, 195, 214, 0.18);
+    backdrop-filter: blur(20px);
+  }
+  .tl-eyebrow {
+    font-family: "Space Grotesk", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-size: 0.7rem;
+    color: #4D5DB3;
+    font-weight: 600;
+  }
+  .tl-grid-bg {
+    background-image:
+      linear-gradient(rgba(77, 93, 179, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(77, 93, 179, 0.06) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .tl-radial {
+    background:
+      radial-gradient(900px 500px at 70% 10%, rgba(20, 27, 212, 0.22), transparent 60%),
+      radial-gradient(700px 500px at 10% 90%, rgba(26, 28, 82, 0.5), transparent 60%);
+  }
+  .tl-btn-primary {
+    background: #141BD4;
+    color: #fff;
+    border-radius: 9999px;
+    transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease;
+    box-shadow: 0 8px 30px -8px rgba(20, 27, 212, 0.7);
+  }
+  .tl-btn-primary:hover { background: #0C11A2; transform: translateY(-2px); }
+  .tl-card-hover {
+    transition: transform .3s ease, border-color .3s ease, background-color .3s ease;
+  }
+  .tl-card-hover:hover {
+    transform: translateY(-4px);
+    border-color: rgba(20, 27, 212, 0.55);
+    background: rgba(26, 28, 82, 0.5);
+  }
+}
+
+@keyframes tl-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.tl-pulse { animation: tl-pulse 2s ease-in-out infinite; }
+
+@keyframes tl-dash {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes tl-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.tl-float { animation: tl-float 6s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
